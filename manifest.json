@@ -1,0 +1,12 @@
+{
+    "display_name": "Note Overlay",
+    "loading_order": 100,
+    "requires": [],
+    "optional": [],
+    "js": "index.js",
+    "css": "style.css",
+    "author": "April & Claude",
+    "version": "1.0.0",
+    "homePage": "https://github.com/ribbinzcat-afk/note-overlay",
+    "auto_update": true
+}

@@ -1,0 +1,153 @@
+/*
+ * Note Overlay
+ *
+ * The bar is a regular child of #send_form (display:flex; flex-wrap:wrap), so its
+ * position is decided by `order`, not by absolute/fixed positioning:
+ *   #qr--bar          order: 1   (Quick Replies)
+ *   .note-overlay     order: 2   (this)
+ *   #nonQRFormItems   order: 25  (input row)
+ *
+ * Because #sheld is a fixed-height flex column and #chat has flex-grow:1, expanding
+ * this bar shrinks the chat log automatically. No backdrop and no soft-keyboard
+ * handling are needed.
+ */
+
+.note-overlay {
+    --note-overlay-max-height: 40dvh;
+
+    order: 2;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    font-size: calc(var(--mainFontSize) * 0.9);
+    color: var(--SmartThemeBodyColor);
+    border-top: 1px solid var(--SmartThemeBorderColor);
+}
+
+.note-overlay.note-overlay-hidden {
+    display: none;
+}
+
+/* ------------------------------------------------------------ collapsed bar */
+
+.note-overlay-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 26px;
+    padding: 2px 8px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity var(--animation-duration-2x);
+}
+
+.note-overlay-bar:hover,
+.note-overlay-bar:focus-visible,
+.note-overlay.note-overlay-expanded .note-overlay-bar {
+    opacity: 1;
+}
+
+.note-overlay-icon,
+.note-overlay-caret {
+    flex: 0 0 auto;
+    font-size: calc(var(--mainFontSize) * 0.9);
+}
+
+.note-overlay.note-overlay-has-content .note-overlay-icon {
+    color: var(--golden, #c8a45c);
+}
+
+.note-overlay-preview {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.note-overlay-preview.note-overlay-empty {
+    opacity: 0.55;
+    font-style: italic;
+}
+
+.note-overlay.note-overlay-no-preview .note-overlay-preview {
+    visibility: hidden;
+}
+
+.note-overlay.note-overlay-disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* ------------------------------------------------------------ expanded body */
+
+.note-overlay-body {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 8px 6px 8px;
+}
+
+.note-overlay.note-overlay-expanded .note-overlay-body {
+    display: flex;
+}
+
+.note-overlay-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 4em;
+    max-height: var(--note-overlay-max-height);
+    overflow-y: auto;
+    resize: none;
+    padding: 6px 8px;
+    border: 1px solid var(--SmartThemeBorderColor);
+    border-radius: 8px;
+    background-color: var(--black30a);
+    color: var(--SmartThemeBodyColor);
+    font-family: var(--mainFontFamily);
+    font-size: var(--mainFontSize);
+    line-height: 1.4;
+}
+
+.note-overlay-textarea:focus-visible {
+    outline: 1px solid var(--SmartThemeQuoteColor);
+}
+
+.note-overlay-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 4px;
+}
+
+.note-overlay-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity var(--animation-duration-2x);
+}
+
+.note-overlay-btn:hover,
+.note-overlay-btn:focus-visible {
+    opacity: 1;
+    background-color: var(--white20a);
+}
+
+/* ------------------------------------------------------------ touch targets */
+
+@media screen and (max-width: 1000px) {
+    .note-overlay-bar {
+        min-height: 34px;
+    }
+
+    .note-overlay-btn {
+        width: 40px;
+        height: 40px;
+    }
+}

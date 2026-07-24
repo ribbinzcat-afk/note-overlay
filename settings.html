@@ -1,0 +1,42 @@
+<div class="note-overlay-settings">
+    <div class="inline-drawer">
+        <div class="inline-drawer-toggle inline-drawer-header">
+            <b>Note Overlay</b>
+            <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
+        </div>
+        <div class="inline-drawer-content">
+            <p>
+                <small>
+                    A scratchpad above the chat input for outlining a reply before typing it.
+                    Notes are stored in the chat metadata, so each chat keeps its own note and
+                    the note travels with the chat when it is exported or deleted.
+                </small>
+            </p>
+
+            <label class="checkbox_label" for="note_overlay_enabled">
+                <input id="note_overlay_enabled" type="checkbox" />
+                <span>Show the note bar</span>
+            </label>
+
+            <label class="checkbox_label" for="note_overlay_preview">
+                <input id="note_overlay_preview" type="checkbox" />
+                <span>Show a preview of the first line on the collapsed bar</span>
+            </label>
+
+            <div class="flex-container flexFlowColumn marginTop5">
+                <label for="note_overlay_height">
+                    Maximum height when expanded (<span id="note_overlay_height_value">40%</span> of the screen)
+                </label>
+                <input id="note_overlay_height" type="range" min="20" max="60" step="5" value="40" />
+            </div>
+
+            <p>
+                <small>
+                    Slash command: <code>/chatnote</code> reads the current note,
+                    <code>/chatnote your text</code> overwrites it.
+                    (Not <code>/note</code> — that one belongs to the Author's Note.)
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
