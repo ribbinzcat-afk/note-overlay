@@ -194,7 +194,7 @@ function buildBar() {
             <textarea class="note-overlay-textarea" rows="3" autocomplete="off"></textarea>
             <div class="note-overlay-actions">
                 <div class="note-overlay-btn interactable fa-solid fa-copy" tabindex="0" data-action="copy"></div>
-                <div class="note-overlay-btn interactable fa-solid fa-arrow-down-to-line" tabindex="0" data-action="push"></div>
+                <div class="note-overlay-btn interactable fa-solid fa-arrow-down" tabindex="0" data-action="push"></div>
                 <div class="note-overlay-btn interactable fa-solid fa-trash-can" tabindex="0" data-action="clear"></div>
                 <div class="note-overlay-btn interactable fa-solid fa-xmark" tabindex="0" data-action="close"></div>
             </div>
